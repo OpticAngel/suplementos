@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Suplementos Alimenticios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="icon" href="assets/screenshot.png">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="sabe" class="container mt-5">
+        <h1 class="text-center">Registro de Inventario de Suplementos Alimenticios</h1>
+        
+        <div class="mb-4">
+            <h6>Producto</h6>
+            <input type="text" v-model="nuevoProducto.nombre" class="form-control mb-2" placeholder="Nombre del Producto" required>
+            <h6>Cantidad</h6>
+            <input type="number" v-model="nuevoProducto.cantidad" class="form-control mb-2" placeholder="Cantidad" required>
+            <div v-if="cantidadValida">
+                <span class="text-success">Cantidad valida</span>
+            </div>
+            <div v-else>
+                <span class="text-danger">{{cantidadMensaje}}</span>
+            </div>
+            <h6>Precio Unitario</h6>
+            <input type="number" v-model="nuevoProducto.precio" class="form-control mb-2" placeholder="Precio Unitario" required>
+            <button class="btn btn-primary" @click="agregarProducto">Agregar</button>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="producto in productos" >
+                    <td>{{producto.nombre}}</td>
+                    <td v-bind:class="{'text-danger': producto.cantidad >= 10}">{{producto.cantidad}}</td>
+                    <td>${{producto.precio.toFixed(2)}}</td>
+                    <td>${{(producto.cantidad * producto.precio).toFixed(2)}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Total Invertido: ${{totalInvertido.toFixed(2)}}</h4>
+        <h4>Stock Total: {{stock}}</h4>
+    </div>
+
+    <script src="Js/js.js"></script>
+</body>
+</html>
