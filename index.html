@@ -13,11 +13,11 @@
     <div id="sabe" class="container mt-5">
         <h1 class="text-center">Registro de Inventario de Suplementos Alimenticios</h1>
         
-        <div class="mb-4">
+        <div>
             <h6>Producto</h6>
-            <input type="text" v-model="nuevoProducto.nombre" class="form-control mb-2" placeholder="Nombre del Producto" required>
+            <input type="text" v-model="nuevoProducto.nombre"  placeholder="Nombre del Producto" required>
             <h6>Cantidad</h6>
-            <input type="number" v-model="nuevoProducto.cantidad" class="form-control mb-2" placeholder="Cantidad" required>
+            <input type="number" v-model="nuevoProducto.cantidad"  placeholder="Cantidad" required>
             <div v-if="cantidadValida">
                 <span class="text-success">Cantidad valida</span>
             </div>
@@ -25,7 +25,7 @@
                 <span class="text-danger">{{cantidadMensaje}}</span>
             </div>
             <h6>Precio Unitario</h6>
-            <input type="number" v-model="nuevoProducto.precio" class="form-control mb-2" placeholder="Precio Unitario" required>
+            <input type="number" v-model="nuevoProducto.precio"  placeholder="Precio Unitario" required><br><br>
             <button class="btn btn-primary" @click="agregarProducto">Agregar</button>
         </div>
 
